@@ -1,13 +1,18 @@
 package com.nowcode.toutiao;
 
+import com.nowcode.toutiao.dao.NewsDAO;
 import com.nowcode.toutiao.dao.UserDAO;
+import com.nowcode.toutiao.model.News;
 import com.nowcode.toutiao.model.User;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Date;
 import java.util.Random;
 
 @RunWith(SpringRunner.class)
@@ -17,6 +22,9 @@ public class InitDatabaseTests {
 
     @Autowired
     UserDAO userDAO;
+
+    @Autowired
+    NewsDAO newsDAO;
 
     @Test
     public void initData(){
@@ -28,6 +36,25 @@ public class InitDatabaseTests {
             user.setPassword("");
             user.setSalt("");
             userDAO.addUser(user);
+
+            News news = new News();
+            news.setCommentCount(i);
+            Date date = new Date();
+            date.setTime(date.getTime()+ 1000*3600*5*i);
+            news.setCreatedDate(date);
+            news.setImage(String.format("http://images.nower.com/head/head/%dm.png", random.nextInt(1000)));
+            news.setLikeCount(i+1);
+            news.setUserId(i+1);
+            news.setTitle(String.format("TITLE{%d}", i));
+            news.setLink(String.format("http://www.nowcoder.com/%d.html", i));
+            newsDAO.addNews(news);
+
+            user.setPassword("newpassword");
+            userDAO.updatePassword(user);
         }
+
+        Assert.assertEquals("newpassword", userDAO.selectById(1).getPassword());
+        userDAO.deleteById(1);
+        Assert.assertNull(userDAO.selectById(1));
     }
 }
