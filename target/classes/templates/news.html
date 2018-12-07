@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="${name}" >name</p>
+<p th:text="'Hello！ ' + ${name} + '!'" >hello world</p>
+
+<table class="table">
+    <thead>
+    <th th:each="map : ${map}" th:text="${map.key}"></th>
+    <th th:each="map : ${map}" th:text="${map.value}"></th>
+    </thead>
+</table>
+<h th:include="header"></h>
+</body>
+
+</html>
