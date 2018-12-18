@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@Controller
+//@Controller
 public class IndexController {
     private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
