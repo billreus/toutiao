@@ -3,7 +3,6 @@ package com.nowcode.toutiao.service;
 import com.nowcode.toutiao.dao.UserDAO;
 import com.nowcode.toutiao.model.User;
 import com.nowcode.toutiao.util.ToutiaoUtil;
-import org.apache.tomcat.util.codec.binary.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
