@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,8 @@ public class LoginController {
     @ResponseBody
     public String reg(Model model, @RequestParam("username") String username,
                       @RequestParam("password") String password,
-                      @RequestParam(value="rember", defaultValue = "0") int rememberme) {
+                      @RequestParam(value="rember", defaultValue = "0") int rememberme,
+                      HttpServletResponse response) {
         try {
             Map<String, Object> map = userService.register(username, password);
 /*
@@ -42,7 +44,13 @@ public class LoginController {
                 return ToutiaoUtil.getJSONString(1, map);
             }
 */
-            if(map.isEmpty()){
+            if(map.containsKey("tickey")){
+                Cookie cookie = new Cookie("ticket", map.get("ticket").toString());
+                cookie.setPath("/");//全站有效
+                if (rememberme > 0) {//加长有效时间
+                    cookie.setMaxAge(3600*24*5);
+                }
+                response.addCookie(cookie);
                 return ToutiaoUtil.getJSONString(0, "注册成功");
             }else {
                 return ToutiaoUtil.getJSONString(1, map);
@@ -76,7 +84,7 @@ public class LoginController {
                 return ToutiaoUtil.getJSONString(1, map);
             }
 */
-            if(map.isEmpty()){
+            if(map.containsKey("tickey")){
                 return ToutiaoUtil.getJSONString(0, "注册成功");
             }else {
                 return ToutiaoUtil.getJSONString(1, map);

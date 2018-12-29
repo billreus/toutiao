@@ -1,20 +1,22 @@
 package com.nowcode.toutiao.service;
 
+import com.nowcode.toutiao.dao.LoginTicketDAO;
 import com.nowcode.toutiao.dao.UserDAO;
+import com.nowcode.toutiao.model.LoginTicket;
 import com.nowcode.toutiao.model.User;
 import com.nowcode.toutiao.util.ToutiaoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class UserService {
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private LoginTicketDAO loginTicketDAO;
 
     //public void addUser(User user){ userDAO.addUser(user);}
     public Map<String, Object> register(String username, String password){
@@ -70,17 +72,24 @@ public class UserService {
             map.put("msgpwd", "密码不正确");
             return map;
         }
-        user = new User();
-        user.setName(username);
-        //user.setPassword(password);
-        user.setSalt(UUID.randomUUID().toString().substring(0, 5));
-        String head = String.format("/head/%dt.png", new Random().nextInt(1000));
-        user.setHeadUrl(head);
-        user.setPassword(ToutiaoUtil.MD5(password+user.getSalt()));
-        userDAO.addUser(user);
+
+        String ticket = addLoginTicket(user.getId());
+        map.put("ticket", ticket);
 
         //登陆
         return map;
+    }
+
+    private String addLoginTicket(int userId){
+        LoginTicket ticket = new LoginTicket();
+        ticket.setUserId(userId);
+        Date date = new Date();
+        date.setTime(date.getTime() + 1000*3600*24);
+        ticket.setExpired(date);
+        ticket.setStatus(0);
+        ticket.setTicket(UUID.randomUUID().toString().replaceAll("-", ""));
+        loginTicketDAO.addTicket(ticket);
+        return ticket.getTicket();
     }
 
     public User getUser(int id){
