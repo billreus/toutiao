@@ -18,7 +18,7 @@
                     '</div>',
                     '<div class="form-group about-pwd">',
                         '<div class="keep-pwd">',
-                            '<label><input type="checkbox" class="js-rember"> 记住登录</label>',
+                            '<label><input type="checkbox" class="js-rember"> 记住登陆</label>',
                         '</div>',
                     '</div>',
                     '<div class="form-group">',

@@ -23,7 +23,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(path = {"/reg"}, method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(path = {"/reg"}, method = {RequestMethod.GET, RequestMethod.POST})//注册
     @ResponseBody
     public String reg(Model model, @RequestParam("username") String username,
                       @RequestParam("password") String password,
@@ -31,20 +31,8 @@ public class LoginController {
                       HttpServletResponse response) {
         try {
             Map<String, Object> map = userService.register(username, password);
-/*
-            if (map.containsKey("ticket")) {
-                Cookie cookie = new Cookie("ticket", map.get("ticket").toString());
-                cookie.setPath("/");
-                if (rememberme > 0) {
-                    cookie.setMaxAge(3600*24*5);
-                }
-                response.addCookie(cookie);
-                return ToutiaoUtil.getJSONString(0, "注册成功");
-            } else {
-                return ToutiaoUtil.getJSONString(1, map);
-            }
-*/
-            if(map.containsKey("tickey")){
+
+            if(map.containsKey("ticket")){
                 Cookie cookie = new Cookie("ticket", map.get("ticket").toString());
                 cookie.setPath("/");//全站有效
                 if (rememberme > 0) {//加长有效时间
@@ -64,29 +52,22 @@ public class LoginController {
 
     }
 
-    @RequestMapping(path = {"/login/"}, method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(path = {"/login/"}, method = {RequestMethod.GET, RequestMethod.POST})//登陆
     @ResponseBody
     public String login(Model model, @RequestParam("username") String username,
                       @RequestParam("password") String password,
                       @RequestParam(value="rember", defaultValue = "0") int rememberme) {
         try {
             Map<String, Object> map = userService.register(username, password);
-/*
+
             if (map.containsKey("ticket")) {
                 Cookie cookie = new Cookie("ticket", map.get("ticket").toString());
                 cookie.setPath("/");
                 if (rememberme > 0) {
                     cookie.setMaxAge(3600*24*5);
                 }
-                response.addCookie(cookie);
                 return ToutiaoUtil.getJSONString(0, "注册成功");
             } else {
-                return ToutiaoUtil.getJSONString(1, map);
-            }
-*/
-            if(map.containsKey("tickey")){
-                return ToutiaoUtil.getJSONString(0, "注册成功");
-            }else {
                 return ToutiaoUtil.getJSONString(1, map);
             }
 

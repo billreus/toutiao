@@ -19,7 +19,7 @@ public class UserService {
     private LoginTicketDAO loginTicketDAO;
 
     //public void addUser(User user){ userDAO.addUser(user);}
-    public Map<String, Object> register(String username, String password){
+    public Map<String, Object> register(String username, String password){//注册
 
         Map<String, Object> map = new HashMap<String, Object>();
         if(username == null||username.length()==0){
@@ -41,16 +41,18 @@ public class UserService {
         user.setName(username);
         //user.setPassword(password);
         user.setSalt(UUID.randomUUID().toString().substring(0, 5));
-        String head = String.format("/head/%dt.png", new Random().nextInt(1000));
+        String head = String.format("http://images.nowcoder.com/head/%dt.png", new Random().nextInt(1000));
         user.setHeadUrl(head);
         user.setPassword(ToutiaoUtil.MD5(password+user.getSalt()));
         userDAO.addUser(user);
 
         //登陆
+        String ticket = addLoginTicket(user.getId());
+        map.put("ticket", ticket);
         return map;
     }
 
-    public Map<String, Object> login(String username, String password){
+    public Map<String, Object> login(String username, String password){//登陆
 
         Map<String, Object> map = new HashMap<String, Object>();
         if(username == null||username.length()==0){
@@ -80,7 +82,7 @@ public class UserService {
         return map;
     }
 
-    private String addLoginTicket(int userId){
+    private String addLoginTicket(int userId){//token
         LoginTicket ticket = new LoginTicket();
         ticket.setUserId(userId);
         Date date = new Date();
