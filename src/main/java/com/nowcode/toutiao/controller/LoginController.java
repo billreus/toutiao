@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+//@RestController
 public class LoginController {
 
     @Autowired
@@ -66,7 +67,7 @@ public class LoginController {
                 if (rememberme > 0) {
                     cookie.setMaxAge(3600*24*5);
                 }
-                return ToutiaoUtil.getJSONString(0, "注册成功");
+                return ToutiaoUtil.getJSONString(0, "登陆成功");
             } else {
                 return ToutiaoUtil.getJSONString(1, map);
             }
@@ -74,8 +75,15 @@ public class LoginController {
         } catch (Exception e) {
             //  logger.error("注册异常" + e.getMessage());
             System.out.println(e.getMessage());
-            return ToutiaoUtil.getJSONString(1, "注册异常");
+            return ToutiaoUtil.getJSONString(1, "登陆异常");
         }
 
+    }
+
+    @RequestMapping(path = {"/logout/"}, method = {RequestMethod.GET, RequestMethod.POST})//登陆
+    //@ResponseBody
+    public String logout(@CookieValue("ticket") String ticket){
+        userService.logout(ticket);
+        return "redirect:/";//返回首页
     }
 }
