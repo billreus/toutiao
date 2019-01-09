@@ -7,12 +7,12 @@ import java.util.Map;
 public class ToutiaoUtil {
 
     public static String TOUTIAO_DOMAIN="http://1227.0.0.1:8081/";
-    public static String IMAGE_DIR = "D:/";
+    public static String IMAGE_DIR = "D:/toutiao/";
     public static String[] IMAGE_FILE_EXTD = new String[] {"png", "bmp", "jpg", "jpeg"};
 
-    public static boolean isFileAllowed(String fileName) {
+    public static boolean isFileAllowed(String fileExt) {
         for (String ext : IMAGE_FILE_EXTD) {
-            if (ext.equals(fileName)) {
+            if (ext.equals(fileExt)) {
                 return true;
             }
         }

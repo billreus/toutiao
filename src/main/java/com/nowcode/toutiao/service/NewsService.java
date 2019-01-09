@@ -6,10 +6,8 @@ import com.nowcode.toutiao.model.News;
 import com.nowcode.toutiao.util.ToutiaoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import org.springframework.web.multipart.MultipartFile;
 
-import java.nio.file.Path;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
