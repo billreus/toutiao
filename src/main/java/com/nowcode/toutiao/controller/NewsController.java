@@ -1,8 +1,11 @@
 package com.nowcode.toutiao.controller;
 
 
+import com.nowcode.toutiao.model.HostHolder;
+import com.nowcode.toutiao.model.News;
 import com.nowcode.toutiao.service.NewsService;
 import com.nowcode.toutiao.util.ToutiaoUtil;
+import org.apache.catalina.Host;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Date;
 
 @Controller
 public class NewsController {
@@ -24,6 +28,9 @@ public class NewsController {
 
     @Autowired
     NewsService newsService;
+
+    @Autowired
+    HostHolder hostHolder;
 
     @RequestMapping(path = {"/image"}, method = {RequestMethod.GET})//图片下载
     @ResponseBody
@@ -38,6 +45,30 @@ public class NewsController {
         }
     }
 
+    @RequestMapping(path = {"/user/addNews/"}, method = {RequestMethod.POST})//添加新闻,由于没有缩图所以图片显示都是失败，缩图使用云存储
+    @ResponseBody
+    public String addNew(@RequestParam("image") String image,
+                          @RequestParam("title") String title,
+                          @RequestParam("link") String link){
+        try{
+            News news = new News();
+            if(hostHolder.getUser() != null){
+                news.setUserId(hostHolder.getUser().getId());
+            }else {
+                //匿名id
+                news.setUserId(3);
+            }
+            news.setImage(image);
+            news.setCreatedDate(new Date());
+            news.setTitle(title);
+            news.setLink(link);
+            newsService.addNews(news);
+            return ToutiaoUtil.getJSONString(0);
+        }catch (Exception e){
+            logger.error("添加咨询错误" + e.getMessage());
+            return ToutiaoUtil.getJSONString(1, "发布失败");
+        }
+    }
 
     @RequestMapping(path = {"/uploadImage/"}, method = {RequestMethod.POST})//图片上传
     @ResponseBody
