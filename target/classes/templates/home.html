@@ -16,7 +16,7 @@
                 <div class="posts">
                     <div class="post"  th:with="news=${vo.get('news')}">
                         <div class="votebar">
-                            <!--<div th:if="${vo.get('like')}>0">
+                            <div th:if="${vo.get('like')}>0">
                                 <button class="click-like up pressed" th:attr="data-id=${news.getId()}" title="赞同"><i class="vote-arrow"></i><span class="count" th:text="${news.getId()}">100</span></button>
                             </div>
                             <div th:unless="${vo.get('like')}>0">
@@ -27,9 +27,9 @@
                             </div>
                             <div th:unless="${vo.get('like')}<0">
                                 <button class="click-dislike down" th:attr="data-id=${news.getId()}" title="反对"><i class="vote-arrow"></i></button>
-                            </div>-->
-                            <button class="click-like up" aria-pressed="false" title="赞同"><i class="vote-arrow"></i><span class="count" th:text="${news.getLikeCount()}">100</span></button>
-                            <button class="click-dislike down" aria-pressed="true" title="反对"><i class="vote-arrow"></i>
+                            </div>
+                            <!--<button class="click-like up" aria-pressed="false" title="赞同"><i class="vote-arrow"></i><span class="count" th:text="${news.getLikeCount()}">100</span></button>
+                            <button class="click-dislike down" aria-pressed="true" title="反对"><i class="vote-arrow"></i>-->
                         </div>
                         <div class="content">
                             <div >
