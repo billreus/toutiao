@@ -1,9 +1,12 @@
 package com.nowcode.toutiao.util;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+
+import java.util.List;
 
 //启动redis先启动cmd输入：1.d: 2.cd D:\Redis-x64-3.2.100 3. redis-server  redis.windows.conf
 /*测试
@@ -37,6 +40,35 @@ public class JedisAdapter implements InitializingBean{
 
     private Jedis getJedis(){
         return pool.getResource();
+    }
+
+    public String get(String key) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return getJedis().get(key);
+        } catch (Exception e) {
+            // logger.error("发生异常" + e.getMessage());
+            return null;
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+    }
+
+    public void set(String key, String value) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            jedis.set(key, value);
+        } catch (Exception e) {
+            //  logger.error("发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
     }
 
     public long sadd(String key, String value){
@@ -96,5 +128,47 @@ public class JedisAdapter implements InitializingBean{
                 jedis.close();
             }
         }
+    }
+
+    public long lpush(String key, String value) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.lpush(key, value);
+        } catch (Exception e) {
+            //   logger.error("发生异常" + e.getMessage());
+            return 0;
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+    }
+
+    public List<String> brpop(int timeout, String key) {
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            return jedis.brpop(timeout, key);
+        } catch (Exception e) {
+            //  logger.error("发生异常" + e.getMessage());
+            return null;
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+    }
+
+    public void setObject(String key, Object obj) {//存取对象
+        set(key, JSON.toJSONString(obj));
+    }
+
+    public <T> T getObject(String key, Class<T> clazz) {//读取对象
+        String value = get(key);
+        if (value != null) {
+            return JSON.parseObject(value, clazz);
+        }
+        return null;
     }
 }
