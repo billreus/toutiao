@@ -1,6 +1,9 @@
 package com.nowcode.toutiao.controller;
 
 
+import com.nowcode.toutiao.async.EventModel;
+import com.nowcode.toutiao.async.EventProducer;
+import com.nowcode.toutiao.async.EventType;
 import com.nowcode.toutiao.model.News;
 import com.nowcode.toutiao.model.ViewObject;
 import com.nowcode.toutiao.service.NewsService;
@@ -24,7 +27,10 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(path = {"/reg"}, method = {RequestMethod.GET, RequestMethod.POST})//注册
+    @Autowired
+    EventProducer eventProducer;
+
+    @RequestMapping(path = {"/reg/"}, method = {RequestMethod.GET, RequestMethod.POST})//注册
     @ResponseBody
     public String reg(Model model, @RequestParam("username") String username,
                       @RequestParam("password") String password,
@@ -69,6 +75,8 @@ public class LoginController {
                     cookie.setMaxAge(3600*24*5);
                 }
                 response.addCookie(cookie);//添加以后自动刷新页面才会返回登陆后的界面，没有相当于刷新界面
+                eventProducer.fireEvent(new EventModel(EventType.LOGIN).setActorId((int) map.get("userId"))
+                        .setExt("username", username).setExt("email", "text.com"));//异步
                 return ToutiaoUtil.getJSONString(0, "登陆成功");
             } else {
                 return ToutiaoUtil.getJSONString(1, map);
@@ -76,7 +84,7 @@ public class LoginController {
 
         } catch (Exception e) {
             //  logger.error("注册异常" + e.getMessage());
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
             return ToutiaoUtil.getJSONString(1, "登陆异常");
         }
 

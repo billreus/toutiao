@@ -1,6 +1,6 @@
 package com.nowcode.toutiao.async;
 
-public enum EventType {
+public enum EventType {//表示刚刚发生了什么事件
     LIKE(0),
     COMMENT(1),
     LOGIN(2),

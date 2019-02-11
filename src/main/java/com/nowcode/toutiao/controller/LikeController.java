@@ -1,6 +1,9 @@
 package com.nowcode.toutiao.controller;
 
 
+import com.nowcode.toutiao.async.EventModel;
+import com.nowcode.toutiao.async.EventProducer;
+import com.nowcode.toutiao.async.EventType;
 import com.nowcode.toutiao.model.EntityType;
 import com.nowcode.toutiao.model.HostHolder;
 import com.nowcode.toutiao.model.News;
@@ -25,21 +28,19 @@ public class LikeController {
     @Autowired
     NewsService newsService;
 
-    //@Autowired
-    //EventProducer eventProducer;
+    @Autowired
+    EventProducer eventProducer;//异步
 
     @RequestMapping(path = {"/like"}, method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public String like(@Param("newId") int newsId) {
-        int userId = hostHolder.getUser().getId();
-        long likeCount = likeService.like(userId, EntityType.ENTITY_NEWS, newsId);
+        long likeCount = likeService.like(hostHolder.getUser().getId(), EntityType.ENTITY_NEWS, newsId);
         // 更新喜欢数
-
+        News news = newsService.getById(newsId);
         newsService.updateLikeCount(newsId, (int) likeCount);
-        /*eventProducer.fireEvent(new EventModel(EventType.LIKE)
+         eventProducer.fireEvent(new EventModel(EventType.LIKE)
                 .setEntityOwnerId(news.getUserId())
                 .setActorId(hostHolder.getUser().getId()).setEntityId(newsId));
-        */
         return ToutiaoUtil.getJSONString(0, String.valueOf(likeCount));
     }
 

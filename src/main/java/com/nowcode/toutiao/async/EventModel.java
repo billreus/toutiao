@@ -3,21 +3,22 @@ package com.nowcode.toutiao.async;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EventModel {
+public class EventModel {//事件发生的数据
     private EventType type;
     private int actorId;//触发id
-    private int entiyType;//触发对象
-    private int entiyId;//触发对象
+    private int entityType;//触发对象
+    private int entityId;//触发对象
     private int entityOwnerId;//对象拥有者
     private Map<String, String> exts = new HashMap<String, String>();
 
+    /*
     public String getExt(String key){
         return exts.get(key);
     }
     public EventModel setExt(String key, String value){
         exts.put(key, value);
         return this;
-    }
+    }*/
 
     public EventModel(EventType type){
         this.type = type;
@@ -45,21 +46,21 @@ public class EventModel {
         return this;
     }
 
-    public int getEntiyType() {
-        return entiyType;
+    public int getEntityType() {
+        return entityType;
     }
 
-    public EventModel setEntiyType(int entiyType) {
-        this.entiyType = entiyType;
+    public EventModel setEntityType(int entityType) {
+        this.entityType = entityType;
         return this;
     }
 
-    public int getEntiyId() {
-        return entiyId;
+    public int getEntityId() {
+        return entityId;
     }
 
-    public EventModel setEntiyId(int entiyId) {
-        this.entiyId = entiyId;
+    public EventModel setEntityId(int entityId) {
+        this.entityId = entityId;
         return this;
     }
 
@@ -72,6 +73,14 @@ public class EventModel {
         return this;
     }
 
+    public String getExt(String name) {
+        return exts.get(name);
+    }
+
+    public EventModel setExt(String name, String value) {
+        exts.put(name, value);
+        return this;
+    }
     public Map<String, String> getExts() {
         return exts;
     }

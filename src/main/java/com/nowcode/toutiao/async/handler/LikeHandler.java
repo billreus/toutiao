@@ -25,16 +25,18 @@ public class LikeHandler implements EventHandler {
 
     @Override
     public void doHandle(EventModel model) {
-        /*Message message = new Message();
+        Message message = new Message();
+        message.setFromId(3);
         User user = userService.getUser(model.getActorId());
-        message.setToId(model.getEntityOwnerId());
+        //message.setToId(model.getEntityOwnerId());
+        message.setToId(model.getActorId());
         message.setContent("用户" + user.getName() +
-                " 赞了你的资讯,http://127.0.0.1:8080/news/"
+                " 赞了你的资讯,http://127.0.0.1:8081/news/"
                 + String.valueOf(model.getEntityId()));
         // SYSTEM ACCOUNT
-        message.setFromId(3);
+        //message.setFromId(3);
         message.setCreatedDate(new Date());
-        messageService.addMessage(message);*/
+        messageService.addMessage(message);
         System.out.println("liked");
     }
 

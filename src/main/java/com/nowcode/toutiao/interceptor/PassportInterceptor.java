@@ -28,7 +28,7 @@ public class PassportInterceptor implements HandlerInterceptor {
     private HostHolder hostHolder;
 
     @Override//找用户,先于control层
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         String ticket = null;
         if(request.getCookies() != null){
             for(Cookie cookie : request.getCookies()){
@@ -54,14 +54,14 @@ public class PassportInterceptor implements HandlerInterceptor {
 
     //渲染之前
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object o, ModelAndView modelAndView) throws Exception {
         if(modelAndView != null && hostHolder.getUser() !=null){
             modelAndView.addObject("user", hostHolder.getUser());//前端直接访问user
         }
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object o, Exception ex) throws Exception {
         hostHolder.clear();
     }
 }

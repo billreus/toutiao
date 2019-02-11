@@ -63,14 +63,14 @@ public class MessageController {
         try {
             int localUserId = hostHolder.getUser().getId();
             List<ViewObject> conversations = new ArrayList<>();
-            List<Message> conversationList = messageService.getConversationList(localUserId, 0, 10);
+            List<Message> conversationList = messageService.getConversationList(localUserId, 0, 20);
             for (Message msg : conversationList) {
                 ViewObject vo = new ViewObject();
                 vo.set("conversation", msg);
                 int targetId = msg.getFromId() == localUserId ? msg.getToId() : msg.getFromId();
                 User user = userService.getUser(targetId);
                 vo.set("user", user);
-                vo.set("conversationsCount",messageService.getConversationCout(msg.getConversationId()));
+                //vo.set("conversationsCount",messageService.getConversationCout(msg.getConversationId()));
                 vo.set("unread", messageService.getUnreadCount(localUserId, msg.getConversationId()));
                 conversations.add(vo);
             }
@@ -89,15 +89,20 @@ public class MessageController {
     public String addMessage(@RequestParam("fromId") int fromId,
                              @RequestParam("toId") int toId,
                              @RequestParam("content") String content) {
-        fromId=hostHolder.getUser().getId();
-        Message msg = new Message();
-        msg.setContent(content);
-        msg.setCreatedDate(new Date());
-        msg.setToId(toId);
-        msg.setFromId(fromId);
-        msg.setConversationId(fromId < toId ? String.format("%d_%d", fromId, toId) :
-                String.format("%d_%d", toId, fromId));
-        messageService.addMessage(msg);
-        return ToutiaoUtil.getJSONString(msg.getId());
+        try {
+            //fromId=hostHolder.getUser().getId();
+            Message msg = new Message();
+            msg.setContent(content);
+            msg.setCreatedDate(new Date());
+            msg.setToId(toId);
+            msg.setFromId(fromId);
+            //msg.setConversationId(fromId < toId ? String.format("%d_%d", fromId, toId) :
+            //        String.format("%d_%d", toId, fromId));
+            messageService.addMessage(msg);
+            return ToutiaoUtil.getJSONString(msg.getId());
+        } catch (Exception e){
+            return ToutiaoUtil.getJSONString(1, "插入评论失败");
+        }
+
     }
 }

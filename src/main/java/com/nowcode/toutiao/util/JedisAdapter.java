@@ -8,7 +8,7 @@ import redis.clients.jedis.JedisPool;
 
 import java.util.List;
 
-//启动redis先启动cmd输入：1.d: 2.cd D:\Redis-x64-3.2.100 3. redis-server  redis.windows.conf
+//启动redis先启动cmd输入：1.d: 2.cd D:\Redis-x64-3.2.100 3. +
 /*测试
 public class RedisKeyUtil{
     public static void print(int index, Object obj){
@@ -125,6 +125,21 @@ public class JedisAdapter implements InitializingBean{
         }
         finally {
             if(jedis != null){
+                jedis.close();
+            }
+        }
+    }
+
+    public void setex(String key, String value) {
+        // 验证码, 防机器注册，记录上次注册时间，有效期3天
+        Jedis jedis = null;
+        try {
+            jedis = pool.getResource();
+            jedis.setex(key, 10, value);
+        } catch (Exception e) {
+            //  logger.error("发生异常" + e.getMessage());
+        } finally {
+            if (jedis != null) {
                 jedis.close();
             }
         }

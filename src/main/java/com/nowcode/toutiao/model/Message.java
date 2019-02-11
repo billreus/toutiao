@@ -56,8 +56,16 @@ public class Message {
         this.hasRead = hasRead;
     }
 
+    /*
     public String getConversationId() {
         return conversationId;
+    }*/
+
+    public String getConversationId() {
+        if (fromId < toId) {
+            return String.format("%d_%d", fromId, toId);
+        }
+        return String.format("%d_%d", toId, fromId);
     }
 
     public void setConversationId(String conversationId) {

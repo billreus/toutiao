@@ -17,10 +17,11 @@ import java.util.Map;
 
 
 @Service
-public class EventConsumer implements InitializingBean, ApplicationContextAware {
+public class EventConsumer implements InitializingBean, ApplicationContextAware {//取队列数据，异步处理
     //信息需要初始化
     private Map<EventType, List<EventHandler>> config = new HashMap<>();//由event找到handler
     private ApplicationContext applicationContext;
+
     @Autowired
     private JedisAdapter jedisAdapter;
 

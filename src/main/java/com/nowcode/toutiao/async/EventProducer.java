@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EventProducer {
+public class EventProducer {//发送数据
     @Autowired
     JedisAdapter jedisAdapter;
 
-    public boolean fireEvent(EventModel model) {
+    public boolean fireEvent(EventModel eventModel) {
         try {
-            String json = JSONObject.toJSONString(model);
+            String json = JSONObject.toJSONString(eventModel);
             String key = RedisKeyUtil.getEventQueueKey();
             jedisAdapter.lpush(key, json);
             return true;

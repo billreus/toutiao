@@ -61,7 +61,7 @@ public class NewsController {
         return "detail";
     }
 
-    @RequestMapping(path = {"/addComment"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"/addComment"}, method = {RequestMethod.POST})//增加评论数
     public String addComment(@RequestParam("newsId") int newsId,
                              @RequestParam("content") String content){
         try {
