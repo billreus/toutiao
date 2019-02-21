@@ -4,9 +4,6 @@ package com.nowcode.toutiao.controller;
 import com.nowcode.toutiao.async.EventModel;
 import com.nowcode.toutiao.async.EventProducer;
 import com.nowcode.toutiao.async.EventType;
-import com.nowcode.toutiao.model.News;
-import com.nowcode.toutiao.model.ViewObject;
-import com.nowcode.toutiao.service.NewsService;
 import com.nowcode.toutiao.service.UserService;
 import com.nowcode.toutiao.util.ToutiaoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -30,6 +25,7 @@ public class LoginController {
     @Autowired
     EventProducer eventProducer;
 
+    //注册
     @RequestMapping(path = {"/reg/"}, method = {RequestMethod.GET, RequestMethod.POST})//注册
     @ResponseBody
     public String reg(Model model, @RequestParam("username") String username,

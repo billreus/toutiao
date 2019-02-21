@@ -40,6 +40,7 @@ public class UserService {
         user = new User();
         user.setName(username);
         //user.setPassword(password);
+        //随机生成序列保存到salt用于加密
         user.setSalt(UUID.randomUUID().toString().substring(0, 5));
         String head = String.format("http://images.nowcoder.com/head/%dt.png", new Random().nextInt(1000));
         user.setHeadUrl(head);
