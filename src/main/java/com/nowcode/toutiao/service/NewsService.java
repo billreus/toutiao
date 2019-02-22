@@ -44,20 +44,21 @@ public class NewsService {
     }
 
     public String saveImage(MultipartFile file) throws IOException{
-        int dotPos = file.getOriginalFilename().lastIndexOf(".");
+        int dotPos = file.getOriginalFilename().lastIndexOf(".");//提取文件名
         if(dotPos < 0){
             return null;
         }
 
-        String fileExt = file.getOriginalFilename().substring(dotPos+1).toLowerCase();//提取文件名后缀格式
-        if(!ToutiaoUtil.isFileAllowed(fileExt)){
+        String fileExt = file.getOriginalFilename().substring(dotPos+1).toLowerCase();//提取文件格式
+        if(!ToutiaoUtil.isFileAllowed(fileExt)){//判断是否是图片
             return null;
         }
-
+        //上传上来的用户名变更成随机名
         String fileName = UUID.randomUUID().toString().replaceAll("-", "")+ "." + fileExt;
+        //文件保存到本地or服务器
         Files.copy(file.getInputStream(), new File(ToutiaoUtil.IMAGE_DIR + fileName).toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-
+        //指定用户放访问地址
         return ToutiaoUtil.TOUTIAO_DOMAIN +"image?name=" +fileName;
     }
 }

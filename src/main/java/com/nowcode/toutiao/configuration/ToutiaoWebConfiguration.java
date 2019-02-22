@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Component
+//注册拦截器
 public class ToutiaoWebConfiguration implements WebMvcConfigurer {//注册拦截器
 
     @Autowired

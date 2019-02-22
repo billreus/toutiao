@@ -20,7 +20,7 @@ public class LoginRequiredInterceptor implements HandlerInterceptor {
     @Override//登陆setting页面如果没有登陆用户返回主页
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         if(hostHolder.getUser() == null){
-            response.sendRedirect("/?pop=1");
+            response.sendRedirect("/?pop=1");//前端ip，honmecontroller中pop
             return false;
         }
         return true;

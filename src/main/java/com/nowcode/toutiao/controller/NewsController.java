@@ -84,7 +84,7 @@ public class NewsController {
         return "redirect:/news/" + String.valueOf(newsId);
     }
 
-    @RequestMapping(path = {"/image"}, method = {RequestMethod.GET})//图片下载
+    @RequestMapping(path = {"/image"}, method = {RequestMethod.GET})//展示图片，打开/image+文件名可以看到图片
     @ResponseBody
     public void getImage(@RequestParam("name") String imageName,
                          HttpServletResponse response) {

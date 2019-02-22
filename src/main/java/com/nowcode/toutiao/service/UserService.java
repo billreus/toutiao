@@ -36,7 +36,7 @@ public class UserService {
             map.put("messagename", "用户名已经被注册");
             return map;
         }
-
+        //注册多于登陆的部分
         user = new User();
         user.setName(username);
         //user.setPassword(password);

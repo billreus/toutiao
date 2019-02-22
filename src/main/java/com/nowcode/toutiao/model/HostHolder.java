@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class HostHolder {//存储该次访问的用户
+    //每条线程存储当前用户信息
     private  static ThreadLocal<User> users = new ThreadLocal<User>();
 
     public User getUser(){

@@ -53,7 +53,7 @@ public class HomeController {
 
     @RequestMapping(path = {"/", "/index"}, method = {RequestMethod.GET, RequestMethod.POST})
     public String index(@RequestParam(value = "pop", defaultValue = "0") int pop, Model model) {
-        model.addAttribute("vos", getNews(0, 0, 10));
+        model.addAttribute("vos", getNews(0, 0, 10));//展示10条news
         if (hostHolder.getUser() != null) {
             pop = 0;
         }

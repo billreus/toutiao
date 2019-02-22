@@ -15,7 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
-@Component
+@Component//拦截器 ctrl+n重载handlerInterceptor
+//用于判断用户是否登录过的，
 public class PassportInterceptor implements HandlerInterceptor {
 //
     @Autowired
@@ -28,8 +29,10 @@ public class PassportInterceptor implements HandlerInterceptor {
     private HostHolder hostHolder;
 
     @Override//找用户,先于control层
+    //preHandle拦截controller之前的
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         String ticket = null;
+        //在cookies中找ticket
         if(request.getCookies() != null){
             for(Cookie cookie : request.getCookies()){
                 if(cookie.getName().equals("ticket")){
@@ -38,28 +41,29 @@ public class PassportInterceptor implements HandlerInterceptor {
                 }
             }
         }
-        if(ticket != null){
+        if(ticket != null){//用户登陆过，判断时间是否有效
             LoginTicket loginTicket = loginTicketDAO.selectByTicket(ticket);
             if(loginTicket == null || loginTicket.getExpired().before(new Date())
                     || loginTicket.getStatus() != 0){//时间过期
                 return true;
             }
-
+            //记录登陆过用户的id
             User user = userDAO.selectById(loginTicket.getUserId());
+            //存放登录过的用户
             hostHolder.setUsers(user);
 
         }
         return true;
     }
 
-    //渲染之前
+    //controller之后，渲染之前。把用户加入
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object o, ModelAndView modelAndView) throws Exception {
         if(modelAndView != null && hostHolder.getUser() !=null){
             modelAndView.addObject("user", hostHolder.getUser());//前端直接访问user
         }
     }
-
+    //所有活动结束清除该用户
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object o, Exception ex) throws Exception {
         hostHolder.clear();
