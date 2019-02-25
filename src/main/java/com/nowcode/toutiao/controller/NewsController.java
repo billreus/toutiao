@@ -56,8 +56,8 @@ public class NewsController {
             model.addAttribute("comments", commentVOs);
 
         }
-        model.addAttribute("news", news);
-        model.addAttribute("owner", userService.getUser(news.getUserId()));
+        model.addAttribute("news", news);//新闻
+        model.addAttribute("owner", userService.getUser(news.getUserId()));//作者
         return "detail";
     }
 
