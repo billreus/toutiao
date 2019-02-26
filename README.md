@@ -41,9 +41,9 @@
 ---------|----------|---------
  id |  | 
  content |  | 评论内容
- user_id | B3 | 关联用户
- entity_id | | 评论资讯newId/评论评论commentId
- entity_type | | new/comment
+ user_id | B3 | 发评论的用户
+ entity_id | | 属于哪个新闻newId/评论评论commentId
+ entity_type | | new/comment用于切分是新闻还是新闻中的评论1/2
  created_date |  | 创建日期
  status |  | 有效无效
 
@@ -51,12 +51,13 @@
 
  字段名 | 数据类型 | 含义
 ---------|----------|---------
- id | B1 | C1
- fromid | B2 | C2
- toid | B3 | C3
- content |  |
- conversation_id |  |
- created_date | |
+ id | B1 | 
+ from_id | B2 | 发送用户id
+ to_id | B3 | 目标用户id
+ content |  | 内容
+ has_read | 是否已读
+ conversation_id |  | from_to
+ created_date | | 创建日期
 
 
 

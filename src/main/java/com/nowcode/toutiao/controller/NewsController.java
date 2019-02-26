@@ -40,7 +40,7 @@ public class NewsController {
     @Autowired
     CommentService commentService;
 
-    @RequestMapping(path = {"/news/{newsId}"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/news/{newsId}"}, method = {RequestMethod.GET})//具体的新闻界面
     public String newsDetail(@PathVariable("newsId") int newsId, Model model){
         News news = newsService.getById(newsId);
         if(news != null){
@@ -61,7 +61,7 @@ public class NewsController {
         return "detail";
     }
 
-    @RequestMapping(path = {"/addComment"}, method = {RequestMethod.POST})//增加评论数
+    @RequestMapping(path = {"/addComment"}, method = {RequestMethod.POST})//增加评论
     public String addComment(@RequestParam("newsId") int newsId,
                              @RequestParam("content") String content){
         try {
@@ -76,7 +76,7 @@ public class NewsController {
 
             // 更新评论数量，以后用异步实现
             int count = commentService.getCommentCount(comment.getEntityId(), comment.getEntityType());
-            newsService.updateCommentCount(newsId, count);
+            newsService.updateCommentCount(newsId, count);//更新news数据库中的count
 
         } catch (Exception e) {
             //     logger.error("提交评论错误" + e.getMessage());

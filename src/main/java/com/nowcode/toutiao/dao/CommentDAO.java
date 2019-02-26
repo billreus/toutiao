@@ -21,6 +21,6 @@ public interface CommentDAO {
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where entity_type=#{entityType} and entity_id=#{entityId} order by id  "})
     List<Comment> selectByEntity(@Param("entityId") int entityId, @Param("entityType") int entityType);
 
-    @Select({"select count(id) from ", TABLE_NAME, " where entity_type=#{entityType} and entity_id=#{entityId}"})
+    @Select({"select count(id) from ", TABLE_NAME, " where entity_type=#{entityType} and entity_id=#{entityId}"})//count实现了技术
     int getCommentCount(@Param("entityId") int entityId, @Param("entityType") int entityType);
 }
