@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="004cc667-94a6-4de9-8eff-a81b1edb053c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/controller/NewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/controller/NewsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/dao/CommentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/dao/CommentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/configuration/ToutiaoWebConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/configuration/ToutiaoWebConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/interceptor/PassportInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/interceptor/PassportInterceptor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/model/HostHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/model/HostHolder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/service/NewsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/service/NewsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/controller/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/dao/MessageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/dao/MessageDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/service/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/service/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/controller/MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nowcode/toutiao/controller/MessageController.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,7 +33,7 @@
     <session id="1767269886">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="62" />
+          <entry key="project.closed" value="64" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.106" value="1" />
@@ -49,7 +44,7 @@
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.open.time.37" value="4" />
+          <entry key="project.open.time.37" value="5" />
           <entry key="project.open.time.38" value="4" />
           <entry key="project.open.time.39" value="4" />
           <entry key="project.open.time.4" value="1" />
@@ -74,9 +69,10 @@
           <entry key="project.open.time.67" value="1" />
           <entry key="project.open.time.71" value="1" />
           <entry key="project.open.time.75" value="1" />
+          <entry key="project.open.time.88" value="1" />
           <entry key="project.open.time.90" value="1" />
           <entry key="project.open.time.97" value="1" />
-          <entry key="project.opened" value="66" />
+          <entry key="project.opened" value="68" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -97,7 +93,7 @@
           <entry key="CSS" value="8" />
           <entry key="HTML" value="52" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="305" />
+          <entry key="JAVA" value="307" />
           <entry key="JavaScript" value="8" />
           <entry key="Properties" value="9" />
           <entry key="SQL" value="13" />
@@ -118,7 +114,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="367" />
-          <entry key="JAVA" value="9575" />
+          <entry key="JAVA" value="9631" />
           <entry key="JavaScript" value="4" />
           <entry key="PLAIN_TEXT" value="15" />
           <entry key="Properties" value="18" />
@@ -133,17 +129,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/resources/init-schema.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
+            <state relative-caret-position="1161">
               <caret line="43" column="7" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/controller/MessageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="864">
-              <caret line="65" column="71" selection-start-line="65" selection-start-column="71" selection-end-line="65" selection-end-column="71" />
+            <state relative-caret-position="27">
+              <caret line="69" column="104" selection-start-line="69" selection-start-column="104" selection-end-line="69" selection-end-column="104" />
             </state>
           </provider>
         </entry>
@@ -151,17 +147,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/service/MessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+            <state relative-caret-position="567">
+              <caret line="29" column="61" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/dao/MessageDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="36" column="28" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="28" />
+            <state relative-caret-position="702">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
             </state>
           </provider>
         </entry>
@@ -242,8 +238,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/service/CommentService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/model/EntityType.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/nowcode/toutiao/InitDatabaseTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/service/MessageService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/dao/MessageDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/util/RedisKeyUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/service/LikeService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
@@ -255,7 +249,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/async/EventConsumer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/async/EventModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/model/Message.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/controller/MessageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/util/JedisAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/util/MailSender.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
@@ -272,6 +265,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/service/NewsService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/dao/CommentDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/controller/NewsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/dao/MessageDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/service/MessageService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/controller/MessageController.java" />
       </list>
     </option>
   </component>
@@ -510,7 +506,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551190646593" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551277807735" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ssm-news-master/ssm-news-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -704,6 +700,8 @@
       <workItem from="1550934714967" duration="10000" />
       <workItem from="1551102026943" duration="2745000" />
       <workItem from="1551185531754" duration="2752000" />
+      <workItem from="1551267279441" duration="2863000" />
+      <workItem from="1551277938997" duration="82000" />
     </task>
     <servers />
   </component>
@@ -740,7 +738,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="250236000" />
+    <option name="totallyTimeSpent" value="253181000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -752,13 +750,13 @@
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Web" order="6" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="7" visible="true" weight="0.17480719" />
+      <window_info content_ui="combo" id="Project" order="7" weight="0.17673522" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329235" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Run" order="5" weight="0.3211876" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.13765182" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32793522" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3287858" />
@@ -1062,9 +1060,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
           <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1145,27 +1140,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/init-schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="43" column="7" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/controller/MessageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="65" column="71" selection-start-line="65" selection-start-column="71" selection-end-line="65" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/service/MessageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/aspect/LogAspect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -1173,10 +1147,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/init-schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1161">
+          <caret line="43" column="7" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/service/MessageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="29" column="61" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/dao/MessageDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="36" column="28" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="28" />
+        <state relative-caret-position="702">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nowcode/toutiao/controller/MessageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="69" column="104" selection-start-line="69" selection-start-column="104" selection-end-line="69" selection-end-column="104" />
         </state>
       </provider>
     </entry>

@@ -33,7 +33,7 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
-    @RequestMapping(path = {"/msg/detail"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/msg/detail"}, method = {RequestMethod.GET})//某个用户发来的详细
     public String conversationDetail(Model model, @RequestParam("conversationId") String conversationId) {
         try {
             List<ViewObject> messages = new ArrayList<ViewObject>();
@@ -58,7 +58,7 @@ public class MessageController {
         return "letterDetail";
     }
 
-    @RequestMapping(path = {"/msg/list"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/msg/list"}, method = {RequestMethod.GET})//发来私信的用户列表
     public String conversationList(Model model) {
         try {
             int localUserId = hostHolder.getUser().getId();
@@ -67,10 +67,10 @@ public class MessageController {
             for (Message msg : conversationList) {
                 ViewObject vo = new ViewObject();
                 vo.set("conversation", msg);
-                int targetId = msg.getFromId() == localUserId ? msg.getToId() : msg.getFromId();
+                int targetId = msg.getFromId() == localUserId ? msg.getToId() : msg.getFromId();//判断对方id
                 User user = userService.getUser(targetId);
                 vo.set("user", user);
-                //vo.set("conversationsCount",messageService.getConversationCout(msg.getConversationId()));
+                vo.set("conversationsCount",messageService.getConversationCout(msg.getConversationId()));
                 vo.set("unread", messageService.getUnreadCount(localUserId, msg.getConversationId()));
                 conversations.add(vo);
             }
@@ -84,7 +84,7 @@ public class MessageController {
         return "letter";
     }
 
-    @RequestMapping(path = {"/msg/addMessage"}, method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(path = {"/msg/addMessage"}, method = {RequestMethod.GET, RequestMethod.POST})//插入消息
     @ResponseBody
     public String addMessage(@RequestParam("fromId") int fromId,
                              @RequestParam("toId") int toId,
