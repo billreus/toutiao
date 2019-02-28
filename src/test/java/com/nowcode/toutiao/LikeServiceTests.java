@@ -19,7 +19,7 @@ public class LikeServiceTests {
         //assert断言，测试是否如此，否报错
         //Assert.assertEquals(1, likeService.getLikeStatus(123, 1, 1));
 
-        likeService.disLike(1, 1, 1);
+        likeService.disLike(123, 1, 1);
         Assert.assertEquals(-1, likeService.getLikeStatus(123, 1, 1));
     }
 

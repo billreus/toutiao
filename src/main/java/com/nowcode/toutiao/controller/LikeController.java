@@ -38,9 +38,9 @@ public class LikeController {
         // 更新喜欢数
         News news = newsService.getById(newsId);
         newsService.updateLikeCount(newsId, (int) likeCount);
-         eventProducer.fireEvent(new EventModel(EventType.LIKE)
-                .setEntityOwnerId(news.getUserId())
-                .setActorId(hostHolder.getUser().getId()).setEntityId(newsId));
+        //eventProducer.fireEvent(new EventModel(EventType.LIKE)
+        //        .setEntityOwnerId(news.getUserId())
+        //        .setActorId(hostHolder.getUser().getId()).setEntityId(newsId));
         return ToutiaoUtil.getJSONString(0, String.valueOf(likeCount));
     }
 

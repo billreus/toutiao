@@ -8,7 +8,10 @@ import redis.clients.jedis.JedisPool;
 
 import java.util.List;
 
-//启动redis先启动cmd输入：1.d: 2.cd D:\Redis-x64-3.2.100 3. +
+//启动redis先启动cmd输入：1.d: 2.cd D:\Redis-x64-3.2.100 3. redis-server  redis.windows.conf
+//查看数据需要重新打开一个cmd，到第三步然后redis-cli.exe -h 127.0.0.1 -p 6379
+//显示所有KEY命令：KEYS *
+
 /*测试
 public class RedisKeyUtil{
     public static void print(int index, Object obj){
@@ -41,7 +44,7 @@ public class JedisAdapter implements InitializingBean{
     private Jedis getJedis(){
         return pool.getResource();
     }
-
+//字符串
     public String get(String key) {
         Jedis jedis = null;
         try {
@@ -70,8 +73,8 @@ public class JedisAdapter implements InitializingBean{
             }
         }
     }
-
-    public long sadd(String key, String value){
+//列表
+    public long sadd(String key, String value){//将一个或多个加入key集合中
         Jedis jedis = null;
         try{
             jedis = pool.getResource();
@@ -85,7 +88,7 @@ public class JedisAdapter implements InitializingBean{
             }
         }
     }
-    public long srem(String key, String value){
+    public long srem(String key, String value){//移除
         Jedis jedis = null;
         try{
             jedis = pool.getResource();
@@ -100,7 +103,7 @@ public class JedisAdapter implements InitializingBean{
         }
     }
 
-    public boolean sismember(String key, String value){
+    public boolean sismember(String key, String value){//是否存在，存在返回1
         Jedis jedis = null;
         try{
             jedis = pool.getResource();
@@ -115,7 +118,7 @@ public class JedisAdapter implements InitializingBean{
         }
     }
 
-    public long scard(String key){
+    public long scard(String key){//返回key的基数
         Jedis jedis = null;
         try{
             jedis = pool.getResource();
@@ -130,7 +133,7 @@ public class JedisAdapter implements InitializingBean{
         }
     }
 
-    public void setex(String key, String value) {
+    public void setex(String key, String value) {//设置值及其过期时间
         // 验证码, 防机器注册，记录上次注册时间，有效期3天
         Jedis jedis = null;
         try {
@@ -144,8 +147,8 @@ public class JedisAdapter implements InitializingBean{
             }
         }
     }
-
-    public long lpush(String key, String value) {
+//列表
+    public long lpush(String key, String value) {//放入
         Jedis jedis = null;
         try {
             jedis = pool.getResource();
@@ -160,7 +163,7 @@ public class JedisAdapter implements InitializingBean{
         }
     }
 
-    public List<String> brpop(int timeout, String key) {
+    public List<String> brpop(int timeout, String key) {//列表的阻塞式(blocking)弹出
         Jedis jedis = null;
         try {
             jedis = pool.getResource();

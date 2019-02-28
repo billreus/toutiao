@@ -41,7 +41,7 @@ public class HomeController {
             ViewObject vo = new ViewObject();
             vo.set("news", news);
             vo.set("user", userService.getUser(news.getUserId()));
-            if (localUserId != 0) {//已登陆状态
+            if (localUserId != 0) {//已登陆状态，设置like数
                 vo.set("like",likeService.getLikeStatus(localUserId, EntityType.ENTITY_NEWS, news.getId()));
             } else {
                 vo.set("like", 0);
