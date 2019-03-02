@@ -71,8 +71,8 @@ public class LoginController {
                     cookie.setMaxAge(3600*24*5);
                 }
                 response.addCookie(cookie);//添加以后自动刷新页面才会返回登陆后的界面，没有相当于刷新界面
-                eventProducer.fireEvent(new EventModel(EventType.LOGIN).setActorId((int) map.get("userId"))
-                        .setExt("username", username).setExt("email", "text.com"));//异步
+                //eventProducer.fireEvent(new EventModel(EventType.LOGIN).setActorId((int) map.get("userId"))
+                //        .setExt("username", username).setExt("email", "text.com"));//异步
                 return ToutiaoUtil.getJSONString(0, "登陆成功");
             } else {
                 return ToutiaoUtil.getJSONString(1, map);
